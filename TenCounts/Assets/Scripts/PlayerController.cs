@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour {
     public GameManager gameManager;
@@ -17,25 +18,23 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
         if(Input.GetKeyDown(KeyCode.LeftArrow) && field > 0){
             field--;
-            this.GetComponent<Transform>().position = CalcualteField(field);
+            //this.GetComponent<Transform>().position = CalcualteField(field);
+            this.GetComponent<Transform>().DOMove(CalcualteField(field), 0.2f)
+                .SetEase(Ease.InOutElastic)
+                .OnKill(End);
         }
         if(Input.GetKeyDown(KeyCode.RightArrow) && field < 9){
             field++;
-            this.GetComponent<Transform>().position = CalcualteField(field);
+            this.GetComponent<Transform>().DOMove(CalcualteField(field), 0.2f)
+                .SetEase(Ease.InOutElastic)
+                .OnKill(End);
         }
 	}
 
-    Vector3 CalcualteField(int num){
+    Vector3 CalcualteField(int num)
+    {
         return new Vector3(-7.2f + 1.6f * num, -3.0f, -1.0f);
     }
-
-    /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "Bullet"){
-            Destroy(collision.gameObject);
-            gameManager.GameOver();
-        }
-    }*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -44,5 +43,9 @@ public class PlayerController : MonoBehaviour {
             Destroy(collision.gameObject);
             gameManager.GameOver();
         }
+    }
+
+    void End(){
+        // not implemented
     }
 }
