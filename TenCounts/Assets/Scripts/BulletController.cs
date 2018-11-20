@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour {
     public GameManager gameManager;
-    public GameObject bullet;
+    public GameObject[] bullets;
 
     private float bulletTime;
     private float interval;
@@ -23,9 +23,10 @@ public class BulletController : MonoBehaviour {
         bulletTime += Time.deltaTime;
         if(bulletTime > interval){
             bulletTime = 0.0f;
-            interval = 1.0f / gameManager.level * Random.Range(0.9f,1.1f);
+            interval = 1.0f / gameManager.level * Random.Range(0.8f,1.2f);
             int pos = Random.Range(0, 10);
-            Instantiate(bullet, CalcualteBulletPos(pos), Quaternion.identity);
+            int num = Random.Range(0, 3);
+            Instantiate(bullets[num], CalcualteBulletPos(pos), Quaternion.identity);
         }
 	}
 

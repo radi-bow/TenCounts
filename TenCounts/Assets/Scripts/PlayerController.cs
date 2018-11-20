@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour {
     public int firstField = 5;
     private int field;
 
+    public AudioSource audioSource;
+    public AudioClip destroySound;
+
 	// Use this for initialization
 	void Start () {
         field = firstField;
@@ -40,6 +43,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Bullet")
         {
+            audioSource.PlayOneShot(destroySound);
             Destroy(collision.gameObject);
             gameManager.GameOver();
         }

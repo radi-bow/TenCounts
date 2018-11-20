@@ -26,5 +26,6 @@ public class StartButtonController : MonoBehaviour {
         endCanvas.gameObject.SetActive(false);
         gameManager.time = 0.0f;
         gameManager.level = 1;
+        gameManager.oldAudioTiming = 0;
     }
 }
