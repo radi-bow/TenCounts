@@ -16,8 +16,8 @@ public class CameraColorController : MonoBehaviour {
 	}
 
     public void Flash(){
-        this.GetComponent<Camera>().DOColor(Color.white, 0.6f)
+        this.GetComponent<Camera>().DOColor(Color.white, 1.0f)
             .SetLoops(2, LoopType.Yoyo)
-            .SetEase(Ease.InOutExpo);
+            .SetEase(Ease.InOutElastic);
     }
 }

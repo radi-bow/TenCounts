@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour {
     public AudioSource audioSource;
     public AudioClip destroySound;
 
+    public Sequence sequence;
+
 	// Use this for initialization
 	void Start () {
         field = firstField;
@@ -43,6 +45,11 @@ public class PlayerController : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Bullet")
         {
+            sequence = DOTween.Sequence()
+                                       .Append(this.GetComponent<Transform>().DOScale(0.6f, 1.0f).SetEase(Ease.InExpo))
+                                       .Join(this.GetComponent<Rigidbody2D>().DORotate(360.0f, 1.0f).SetEase(Ease.OutExpo))
+                                       .OnKill(End);
+            sequence.Play();
             audioSource.PlayOneShot(destroySound);
             Destroy(collision.gameObject);
             gameManager.GameOver();
@@ -52,4 +59,5 @@ public class PlayerController : MonoBehaviour {
     void End(){
         // not implemented
     }
+
 }

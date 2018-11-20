@@ -1335,6 +1335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1718059657}
+  player: {fileID: 1901641830}
   startCanvas: {fileID: 1572701028}
   endCanvas: {fileID: 1882696634}
 --- !u!1001 &1215350169
@@ -1764,6 +1765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1718059657}
+  player: {fileID: 1901641830}
   startCanvas: {fileID: 1572701028}
   endCanvas: {fileID: 1882696634}
 --- !u!1 &1718059655
@@ -2522,6 +2524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1718059657}
+  player: {fileID: 1901641830}
   startCanvas: {fileID: 1572701028}
   endCanvas: {fileID: 1882696634}
 --- !u!1 &1991139893
